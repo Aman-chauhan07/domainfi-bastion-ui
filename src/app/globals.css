@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+:root {
+  /* Light theme colors */
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --card: #ffffff;
+  --card-foreground: #171717;
+  --border: #e5e7eb;
+  --primary: #ef4444;
+  --primary-foreground: #ffffff;
+  --secondary: #f3f4f6;
+  --secondary-foreground: #171717;
+  --accent: #22c55e;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+  --ring: #ef4444;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-ring: var(--ring);
+  
+  /* Font families */
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
+  
+  /* Custom brand colors */
+  --color-red-50: #fef2f2;
+  --color-red-100: #fee2e2;
+  --color-red-500: #ef4444;
+  --color-red-600: #dc2626;
+  --color-red-900: #7f1d1d;
+  
+  /* Animation values */
+  --animate-duration-fast: 150ms;
+  --animate-duration-normal: 300ms;
+  --animate-duration-slow: 500ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark theme colors */
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --muted: #1f2937;
+    --muted-foreground: #9ca3af;
+    --card: #111827;
+    --card-foreground: #ededed;
+    --border: #374151;
+    --primary: #f87171;
+    --primary-foreground: #111827;
+    --secondary: #1f2937;
+    --secondary-foreground: #ededed;
+    --accent: #4ade80;
+    --accent-foreground: #111827;
+    --destructive: #ef4444;
+    --destructive-foreground: #ffffff;
+    --ring: #f87171;
+  }
+}
+
+/* Apply dark mode class overrides */
+.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --muted: #1f2937;
+  --muted-foreground: #9ca3af;
+  --card: #111827;
+  --card-foreground: #ededed;
+  --border: #374151;
+  --primary: #f87171;
+  --primary-foreground: #111827;
+  --secondary: #1f2937;
+  --secondary-foreground: #ededed;
+  --accent: #4ade80;
+  --accent-foreground: #111827;
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+  --ring: #f87171;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  font-feature-settings: "rlig" 1, "calt" 1;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--primary);
+  color: var(--primary-foreground);
+}
+
+/* Glass morphism utility */
+.glass {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}

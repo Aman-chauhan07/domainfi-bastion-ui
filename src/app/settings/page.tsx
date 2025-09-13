@@ -1,0 +1,351 @@
+'use client';
+
+import { useState } from "react";
+import { Layout } from "@/components/layout";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { User, Bell, Shield, Palette, Globe, Mail, Smartphone } from "lucide-react";
+import { useAccount } from "wagmi";
+import { ThemeToggle } from "@/components/theme-toggle";
+
+export default function SettingsPage() {
+  const { isConnected, address } = useAccount();
+  const [notifications, setNotifications] = useState({
+    email: true,
+    push: false,
+    auctions: true,
+    portfolio: true,
+    circles: false,
+  });
+
+  const [profile, setProfile] = useState({
+    displayName: "Domain Investor",
+    email: "investor@example.com",
+    bio: "Professional domain investor focused on Web3 and crypto domains",
+    website: "https://example.com",
+    twitter: "@domaininvestor",
+  });
+
+  if (!isConnected) {
+    return (
+      <Layout>
+        <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
+          <div className="flex items-center justify-between space-y-2">
+            <div>
+              <h2 className="text-3xl font-bold tracking-tight">Settings</h2>
+              <p className="text-muted-foreground">
+                Connect your wallet to access settings and preferences.
+              </p>
+            </div>
+          </div>
+
+          <Card className="col-span-full">
+            <CardHeader className="pb-3">
+              <CardTitle>Account Settings</CardTitle>
+              <CardDescription>
+                Manage your account preferences, notifications, and security settings.
+              </CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="space-y-4">
+                <h3 className="font-semibold">Available Settings:</h3>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  <li>• Profile and display preferences</li>
+                  <li>• Notification settings for auctions and portfolio</li>
+                  <li>• Security and privacy controls</li>
+                  <li>• Theme and appearance customization</li>
+                  <li>• Connected wallets and accounts</li>
+                </ul>
+                <Button className="mt-4">Connect Wallet to Access Settings</Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </Layout>
+    );
+  }
+
+  return (
+    <Layout>
+      <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
+        {/* Header */}
+        <div className="flex items-center justify-between space-y-2">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight">Settings</h2>
+            <p className="text-muted-foreground">
+              Manage your account and application preferences.
+            </p>
+          </div>
+        </div>
+
+        <div className="grid gap-6 md:grid-cols-2">
+          {/* Profile Settings */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <User className="h-5 w-5" />
+                Profile Settings
+              </CardTitle>
+              <CardDescription>
+                Update your profile information and public details.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div>
+                <label className="text-sm font-medium">Display Name</label>
+                <input
+                  type="text"
+                  className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  value={profile.displayName}
+                  onChange={(e) => setProfile({...profile, displayName: e.target.value})}
+                />
+              </div>
+              
+              <div>
+                <label className="text-sm font-medium">Email</label>
+                <input
+                  type="email"
+                  className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  value={profile.email}
+                  onChange={(e) => setProfile({...profile, email: e.target.value})}
+                />
+              </div>
+              
+              <div>
+                <label className="text-sm font-medium">Bio</label>
+                <textarea
+                  className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  rows={3}
+                  value={profile.bio}
+                  onChange={(e) => setProfile({...profile, bio: e.target.value})}
+                />
+              </div>
+              
+              <div>
+                <label className="text-sm font-medium">Website</label>
+                <input
+                  type="url"
+                  className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  value={profile.website}
+                  onChange={(e) => setProfile({...profile, website: e.target.value})}
+                />
+              </div>
+              
+              <div>
+                <label className="text-sm font-medium">Twitter</label>
+                <input
+                  type="text"
+                  className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+                  value={profile.twitter}
+                  onChange={(e) => setProfile({...profile, twitter: e.target.value})}
+                />
+              </div>
+              
+              <Button className="w-full">Update Profile</Button>
+            </CardContent>
+          </Card>
+
+          {/* Notification Settings */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Bell className="h-5 w-5" />
+                Notifications
+              </CardTitle>
+              <CardDescription>
+                Configure your notification preferences.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Mail className="h-4 w-4 text-muted-foreground" />
+                    <span className="text-sm font-medium">Email Notifications</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={notifications.email}
+                    onChange={(e) => setNotifications({...notifications, email: e.target.checked})}
+                    className="rounded"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Smartphone className="h-4 w-4 text-muted-foreground" />
+                    <span className="text-sm font-medium">Push Notifications</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={notifications.push}
+                    onChange={(e) => setNotifications({...notifications, push: e.target.checked})}
+                    className="rounded"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium">Auction Updates</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={notifications.auctions}
+                    onChange={(e) => setNotifications({...notifications, auctions: e.target.checked})}
+                    className="rounded"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium">Portfolio Changes</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={notifications.portfolio}
+                    onChange={(e) => setNotifications({...notifications, portfolio: e.target.checked})}
+                    className="rounded"
+                  />
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="text-sm font-medium">Circle Activities</span>
+                  </div>
+                  <input
+                    type="checkbox"
+                    checked={notifications.circles}
+                    onChange={(e) => setNotifications({...notifications, circles: e.target.checked})}
+                    className="rounded"
+                  />
+                </div>
+              </div>
+              
+              <Button className="w-full" variant="outline">Save Notifications</Button>
+            </CardContent>
+          </Card>
+
+          {/* Appearance Settings */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Palette className="h-5 w-5" />
+                Appearance
+              </CardTitle>
+              <CardDescription>
+                Customize the look and feel of the application.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-sm font-medium">Theme</p>
+                  <p className="text-xs text-muted-foreground">Choose your preferred theme</p>
+                </div>
+                <ThemeToggle />
+              </div>
+              
+              <div>
+                <label className="text-sm font-medium">Language</label>
+                <select className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
+                  <option value="en">English</option>
+                  <option value="es">Español</option>
+                  <option value="fr">Français</option>
+                  <option value="de">Deutsch</option>
+                  <option value="zh">中文</option>
+                </select>
+              </div>
+              
+              <div>
+                <label className="text-sm font-medium">Currency</label>
+                <select className="w-full mt-1 px-3 py-2 border border-input rounded-md bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
+                  <option value="usd">USD ($)</option>
+                  <option value="eur">EUR (€)</option>
+                  <option value="gbp">GBP (£)</option>
+                  <option value="eth">ETH (Ξ)</option>
+                </select>
+              </div>
+              
+              <Button className="w-full" variant="outline">Save Preferences</Button>
+            </CardContent>
+          </Card>
+
+          {/* Security Settings */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                <Shield className="h-5 w-5" />
+                Security & Privacy
+              </CardTitle>
+              <CardDescription>
+                Manage your security settings and connected accounts.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="bg-muted/50 rounded-lg p-3">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="h-2 w-2 rounded-full bg-green-500"></div>
+                  <span className="text-sm font-medium">Connected Wallet</span>
+                </div>
+                <p className="text-xs text-muted-foreground font-mono">{address}</p>
+              </div>
+              
+              <div className="space-y-2">
+                <Button className="w-full" variant="outline">
+                  Change Connected Wallet
+                </Button>
+                <Button className="w-full" variant="outline">
+                  Enable Two-Factor Authentication
+                </Button>
+                <Button className="w-full" variant="outline">
+                  Download Data Export
+                </Button>
+                <Button className="w-full" variant="destructive">
+                  Disconnect Account
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* API & Integration Settings */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Globe className="h-5 w-5" />
+              API & Integrations
+            </CardTitle>
+            <CardDescription>
+              Manage API keys and third-party integrations.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div>
+                <h4 className="font-medium mb-2">API Access</h4>
+                <p className="text-sm text-muted-foreground mb-3">
+                  Generate API keys to access your portfolio data programmatically.
+                </p>
+                <Button variant="outline">Generate API Key</Button>
+              </div>
+              
+              <div>
+                <h4 className="font-medium mb-2">Connected Services</h4>
+                <div className="space-y-2">
+                  <div className="flex items-center justify-between p-2 border rounded">
+                    <span className="text-sm">Domain Valuation Service</span>
+                    <span className="text-xs text-green-600">Connected</span>
+                  </div>
+                  <div className="flex items-center justify-between p-2 border rounded">
+                    <span className="text-sm">Price Analytics API</span>
+                    <span className="text-xs text-muted-foreground">Not connected</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+    </Layout>
+  );
+}
