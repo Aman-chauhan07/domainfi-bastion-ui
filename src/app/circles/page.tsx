@@ -95,7 +95,7 @@ export default function CirclesPage() {
   if (!isConnected) {
     return (
       <Layout>
-        <div className="flex-1 space-y-10 p-6 md:p-12 bg-gradient-to-b from-black via-gray-950 to-gray-900 min-h-screen text-white  pt-6">
+        <div className="flex-1 overflow-hidden space-y-10 p-6 md:p-12 bg-gradient-to-b from-black via-gray-950 to-gray-900 min-h-screen text-white  pt-6">
           <div className="flex items-center justify-center  flex-col  md:flex-row md:items-center md:justify-between">
 
           <div className="max-w-[1200px]">
@@ -121,7 +121,7 @@ export default function CirclesPage() {
           <Card className="col-span-full  hover:scale-105  bg-black/70 backdrop-blur-md border border-red-500/30   hover:shadow-red-500/50 hover:shadow-2xl  transform transition-transform duration-300 shadow-xl rounded-2xl p-6 pl-1 pr-1 mt-10">
             <CardHeader className="pb-5 ">
               <CardTitle className=" text-xl  sm:text-2xl md:text-2xl lg:text-3xl   font-extrabold tracking-tight bg-gradient-to-r from-red-400 to-red-900 bg-clip-text text-transparent ">
-                Join Investment Circles
+                 Investment Circles
               </CardTitle>
               <CardDescription className="text-gray-300 text-base sm:text-xl md:text-xl lg:text-xl">
                 Collaborate with other investors to build diverse domain
@@ -131,7 +131,7 @@ export default function CirclesPage() {
             </Card>
             <Card className="col-span-full  hover:scale-105  bg-black/70 backdrop-blur-md border border-red-500/30   hover:shadow-red-500/50 hover:shadow-2xl  transform transition-transform duration-300 shadow-xl rounded-2xl p-6 pl-1 pr-1 mt-10">
             <CardContent>
-              
+
               <div className="space-y-4">
                 <h3 className=" text-xl  sm:text-2xl md:text-2xl lg:text-3xl   font-extrabold tracking-tight bg-gradient-to-r from-red-400 to-red-900 bg-clip-text text-transparent ">
                   What are Investment Circles?
@@ -161,14 +161,14 @@ export default function CirclesPage() {
 
   return (
     <Layout>
-      <div className="flex-1 space-y-6 p-4 md:p-8 pt-6">
+      <div className="flex-1  overflow-hidden space-y-6 p-4 md:p-8 pt-6 ">
         {/* Header */}
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between space-y-4 md:space-y-0">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight text-white">
+            <h2 className="text-3xl  sm:text-4xl md:text-4xl  lg:text-4xl xl:text-5xl font-bold tracking-tight bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
               Investment Circles
             </h2>
-            <p className="text-gray-400 mt-1">
+            <p className="text-gray-400 mt-1 text-base sm:text-lg md:text-xl lg:text-xl">
               Manage your circles and discover new investment opportunities.
             </p>
           </div>
@@ -179,21 +179,27 @@ export default function CirclesPage() {
         </div>
 
         {/* My Circles */}
-        <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-white">My Circles</h3>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+
+        <div className="space-y-4 mt-12 items-center">
+          <Card className="text-center justify-center py-3 bg-gray-800/30 border-2 border-red-500">
+            <h3 className="text-3xl  sm:text-4xl md:text-3xl  lg:text-3xl xl:text-3xl font-bold bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent inline">
+              My Circles
+            </h3>
+          </Card>
+          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 mt-7">
             {myCircles.map((circle) => (
               <Card
                 key={circle.id}
-                className="cursor-pointer bg-gray-800/30 backdrop-blur-md border border-gray-700/50 hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
+                className="cursor-pointer bg-gray-800/30 backdrop-blur-md border  hover:shadow-red-500 hover:shadow-4xl border-gray-700/50 hover:scale-105 transition-transform shadow-lg "
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-white text-lg">
+                    <CardTitle className="bg-gradient-to-r from-red-200 to-red-700 bg-clip-text text-transparent text-lg">
                       {circle.name}
                     </CardTitle>
+
                     <span
-                      className={`px-2 py-1 text-xs rounded-full ${
+                      className={`px-2 py-1 text-xs  rounded-full ${
                         circle.role === "Admin"
                           ? "bg-purple-500/20 text-purple-400"
                           : "bg-gray-600/20 text-gray-300"
@@ -206,7 +212,7 @@ export default function CirclesPage() {
                     {circle.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-3">
+                <CardContent className="space-y-5">
                   <div className="flex items-center justify-between text-sm text-gray-400">
                     <span className="flex items-center gap-1">
                       <Users className="h-3 w-3" />
@@ -234,7 +240,7 @@ export default function CirclesPage() {
                   </div>
 
                   <Button
-                    className="w-full border border-gray-600/40 hover:border-purple-400 text-white hover:text-purple-400 hover:scale-105 transition-all"
+                    className="w-full border border-gray-600/40  text-white hover:scale-105 transition-all hover:bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500"
                     variant="outline"
                     size="sm"
                   >
@@ -247,22 +253,24 @@ export default function CirclesPage() {
         </div>
 
         {/* Available Circles */}
-        <div className="space-y-4">
-          <h3 className="text-xl font-semibold text-white">
-            Available Circles
-          </h3>
+        <div className="space-y-4 ">
+           <Card className="text-center justify-center py-3 bg-gray-800/30 border-2 border-red-500">
+            <h3 className="text-3xl  sm:text-4xl md:text-3xl  lg:text-3xl xl:text-3xl font-bold bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent inline">
+              Available Circles
+            </h3>
+          </Card>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             {availableCircles.map((circle) => (
               <Card
                 key={circle.id}
-                className="cursor-pointer bg-gray-800/30 backdrop-blur-md border border-gray-700/50 hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
+                className="cursor-pointer bg-gray-800/30  hover:shadow-blue-500 hover:shadow-4xl backdrop-blur-md border border-gray-700/50 hover:scale-105 transition-transform shadow-lg "
               >
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
-                    <CardTitle className="text-white text-lg">
+                    <CardTitle className="bg-gradient-to-r from-red-200 to-red-700 bg-clip-text text-transparent text-lg">
                       {circle.name}
                     </CardTitle>
-                    <span className="px-2 py-1 text-xs rounded-full bg-green-500/20 text-green-400">
+                    <span className="px-2 py-1 text-xs rounded-full text-black font-medium bg-green-500 ">
                       {circle.openSpots} spots left
                     </span>
                   </div>
@@ -298,7 +306,7 @@ export default function CirclesPage() {
                   </div>
 
                   <Button
-                    className="w-full bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:scale-105 transition-transform text-white"
+                    className="w-full  bg-black hover:bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:scale-105 transition-transform text-white"
                     size="sm"
                   >
                     Join Circle
@@ -324,7 +332,7 @@ export default function CirclesPage() {
           ].map((stat, idx) => (
             <Card
               key={idx}
-              className="bg-gray-800/30 backdrop-blur-md border border-gray-700/50 hover:scale-105 transition-transform shadow-lg hover:shadow-xl"
+              className="bg-gray-800/30  border hover:shadow-green-500 hover:shadow-4xl backdrop-blur-md border-gray-700/50 hover:scale-105 transition-transform shadow-lg "
             >
               <CardContent className="p-4 flex items-center gap-3">
                 <stat.icon className={`h-5 w-5 text-gray-400`} />

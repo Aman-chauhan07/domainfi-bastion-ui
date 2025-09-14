@@ -105,7 +105,7 @@ export default function HomePage() {
 
   return (
     <Layout>
-      <div className="flex-1 space-y-10 p-6 md:p-12 bg-gradient-to-b from-black via-gray-950 to-gray-900 min-h-screen text-white">
+      <div className="flex-1 overflow-hidden space-y-10 p-6 md:p-12 bg-gradient-to-b from-black via-gray-950 to-gray-900 min-h-screen text-white">
         {/* Welcome Section */}
         <div className="flex flex-col  md:flex-row md:items-center md:justify-between">
           <div className="max-w-[1200px]">

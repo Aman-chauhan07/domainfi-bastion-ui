@@ -43,7 +43,7 @@ export default function SettingsPage() {
   if (!isConnected) {
     return (
       <Layout>
-        <div className="flex-1 space-y-10 p-6 md:p-12 bg-gradient-to-b from-black via-gray-950 to-gray-900 min-h-screen text-white  ">
+        <div className="flex-1 space-y-10 overflow-hidden p-6 md:p-12 bg-gradient-to-b from-black via-gray-950 to-gray-900 min-h-screen text-white  ">
           <div className="flex items-center justify-center  flex-col  md:flex-row md:items-center md:justify-between">
             <div className="max-w-[1200px]">
               <h2 className="text-3xl  sm:text-4xl md:text-5xl  lg:text-5xl xl:text-6xl font-extrabold tracking-tight bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
@@ -93,12 +93,14 @@ export default function SettingsPage() {
 
   return (
     <Layout>
-      <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
+      <div className="flex-1 overflow-hidden space-y-4 p-4 md:p-8 pt-6">
         {/* Header */}
         <div className="flex items-center justify-between space-y-2">
           <div>
-            <h2 className="text-3xl font-bold tracking-tight">Settings</h2>
-            <p className="text-muted-foreground">
+            <h2 className="text-3xl  sm:text-4xl md:text-4xl  lg:text-4xl xl:text-5xl font-extrabold tracking-tight bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
+              Settings
+            </h2>
+            <p className="text-gray-400 mt-4 text-sm sm:text-lg md:text-lg lg:text-xl">
               Manage your account and application preferences.
             </p>
           </div>
@@ -106,14 +108,18 @@ export default function SettingsPage() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {/* Profile Settings */}
-          <Card>
+          <Card className="hover:shadow-red-500/50 hover:shadow-2xl">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2">
+              <CardTitle className="flex items-center  gap-2">
                 <User className="h-5 w-5" />
-                Profile Settings
+                <span className="text-lg sm:text-lg md:text-lg lg:text-xl">
+                  Profile Settings
+                </span>
               </CardTitle>
               <CardDescription>
-                Update your profile information and public details.
+                <span className="text-sm sm:text-sm md:text-sm lg:text-base">
+                  Update your profile information and public details.
+                </span>
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -177,19 +183,25 @@ export default function SettingsPage() {
                 />
               </div>
 
-              <Button className="w-full">Update Profile</Button>
+              <Button className="w-full text-white bg-red-600 font-medium hover:bg-green-400 hover:text-black hover:font-bold">
+                Update Profile
+              </Button>
             </CardContent>
           </Card>
 
           {/* Notification Settings */}
-          <Card>
+          <Card className="hover:shadow-red-500/50 hover:shadow-2xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Bell className="h-5 w-5" />
-                Notifications
+                <span className="text-lg sm:text-lg md:text-lg lg:text-xl">
+                  Notifications
+                </span>
               </CardTitle>
               <CardDescription>
-                Configure your notification preferences.
+                <span className="text-sm sm:text-sm md:text-sm lg:text-base">
+                  Configure your notification preferences.
+                </span>
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -210,7 +222,7 @@ export default function SettingsPage() {
                         email: e.target.checked,
                       })
                     }
-                    className="rounded"
+                    className="rounded "
                   />
                 </div>
 
@@ -297,14 +309,18 @@ export default function SettingsPage() {
           </Card>
 
           {/* Appearance Settings */}
-          <Card>
+          <Card className="hover:shadow-red-500/50 hover:shadow-2xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Palette className="h-5 w-5" />
-                Appearance
+                <span className="text-lg sm:text-lg md:text-lg lg:text-xl">
+                  Appearance
+                </span>
               </CardTitle>
               <CardDescription>
-                Customize the look and feel of the application.
+                <span className="text-sm sm:text-sm md:text-sm lg:text-base">
+                  Customize the look and feel of the application.
+                </span>
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -346,14 +362,19 @@ export default function SettingsPage() {
           </Card>
 
           {/* Security Settings */}
-          <Card>
+          <Card className="hover:shadow-red-500/50 hover:shadow-2xl">
             <CardHeader>
               <CardTitle className="flex items-center gap-2">
                 <Shield className="h-5 w-5" />
-                Security & Privacy
+
+                <span className="text-lg sm:text-lg md:text-lg lg:text-xl">
+                  Security & Privacy
+                </span>
               </CardTitle>
               <CardDescription>
-                Manage your security settings and connected accounts.
+                <span className="text-sm sm:text-sm md:text-sm lg:text-base">
+                  Manage your security settings and connected accounts.
+                </span>
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
@@ -377,7 +398,10 @@ export default function SettingsPage() {
                 <Button className="w-full" variant="outline">
                   Download Data Export
                 </Button>
-                <Button className="w-full" variant="destructive">
+                <Button
+                  className="w-full font-medium hover:bg-red-900 hover:text-white hover:font-bold"
+                  variant="destructive"
+                >
                   Disconnect Account
                 </Button>
               </div>
@@ -386,14 +410,18 @@ export default function SettingsPage() {
         </div>
 
         {/* API & Integration Settings */}
-        <Card>
+        <Card className="hover:shadow-blue-500/50 hover:shadow-2xl">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Globe className="h-5 w-5" />
-              API & Integrations
+              <span className="text-lg sm:text-lg md:text-lg lg:text-xl">
+                API & Integrations
+              </span>
             </CardTitle>
             <CardDescription>
-              Manage API keys and third-party integrations.
+              <span className="text-sm sm:text-sm md:text-sm lg:text-base">
+                Manage API keys and third-party integrations.
+              </span>
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -404,7 +432,12 @@ export default function SettingsPage() {
                   Generate API keys to access your portfolio data
                   programmatically.
                 </p>
-                <Button variant="outline">Generate API Key</Button>
+                <Button
+                  variant="default"
+                  className="text-white bg-gradient-to-r from-blue-400 via-pink-400 to-yellow-500 "
+                >
+                  Generate API Key
+                </Button>
               </div>
 
               <div>
@@ -412,11 +445,11 @@ export default function SettingsPage() {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between p-2 border rounded">
                     <span className="text-sm">Domain Valuation Service</span>
-                    <span className="text-xs text-green-600">Connected</span>
+                    <span className="text-sm text-green-600">Connected</span>
                   </div>
                   <div className="flex items-center justify-between p-2 border rounded">
                     <span className="text-sm">Price Analytics API</span>
-                    <span className="text-xs text-muted-foreground">
+                    <span className="text-sm text-muted-foreground">
                       Not connected
                     </span>
                   </div>
