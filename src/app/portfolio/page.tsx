@@ -116,35 +116,60 @@ export default function PortfolioPage() {
 
   if (!isConnected) {
     return (
-      <Layout>
-        <div className="flex-1 space-y-4 p-4 md:p-8 pt-6">
-          <div className="flex items-center justify-between space-y-2">
-            <div>
-              <h2 className="text-3xl font-bold tracking-tight">Portfolio</h2>
-              <p className="text-muted-foreground">
-                Connect your wallet to view your domain portfolio.
-              </p>
-            </div>
-          </div>
+     <Layout>
+        <div className="flex-1 space-y-10 p-6 md:p-12 bg-gradient-to-b from-black via-gray-950 to-gray-900 min-h-screen text-white  pt-6">
+          <div className="flex items-center justify-center  flex-col  md:flex-row md:items-center md:justify-between">
 
-          <Card className="col-span-full">
-            <CardHeader className="pb-3">
-              <CardTitle>Track Your Domain Investments</CardTitle>
-              <CardDescription>
+          <div className="max-w-[1200px]">
+            <h2 className="text-3xl  sm:text-4xl md:text-5xl  lg:text-5xl xl:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
+              Portfolio
+            </h2>
+            <p className="text-gray-400 mt-4 text-lg sm:text-xl md:text-2xl lg:text-3xl">
+              Connect your wallet to view your domain portfolio.
+            </p>
+            </div>
+          <div className="max-w-[650px] h-auto w-full">
+            <video
+              src="/hero.mp4"
+              className="w-full  h-full"
+              autoPlay
+              loop
+              muted
+              playsInline
+              />
+          </div>
+              </div>
+
+          <Card className="col-span-full  hover:scale-105  bg-black/70 backdrop-blur-md border border-red-500/30   hover:shadow-red-500/50 hover:shadow-2xl  transform transition-transform duration-300 shadow-xl rounded-2xl p-6 pl-1 pr-1 mt-10">
+            <CardHeader className="pb-5 ">
+              <CardTitle className=" text-xl  sm:text-2xl md:text-2xl lg:text-3xl   font-extrabold tracking-tight bg-gradient-to-r from-red-400 to-red-900 bg-clip-text text-transparent ">
+               Track Your Domain Investments 
+              </CardTitle>
+              <CardDescription className="text-gray-300 text-base sm:text-xl md:text-xl lg:text-xl">
                 Monitor performance, track returns, and manage your domain portfolio.
               </CardDescription>
             </CardHeader>
+            </Card>
+          <Card className="col-span-full  hover:scale-105  bg-black/70 backdrop-blur-md border border-red-500/30   hover:shadow-red-500/50 hover:shadow-2xl  transform transition-transform duration-300 shadow-xl rounded-2xl p-6 pl-1 pr-1 mt-10">
             <CardContent>
               <div className="space-y-4">
-                <h3 className="font-semibold">Portfolio Features:</h3>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  <li>• Real-time domain valuations and market data</li>
+                <h3 className=" text-xl  sm:text-2xl md:text-2xl lg:text-3xl   font-extrabold tracking-tight bg-gradient-to-r from-red-400 to-red-900 bg-clip-text text-transparent ">
+                  Portfolio Features:
+                </h3>
+                <ul className="space-y-2 text-base text-gray-300">
+                  <li>
+                    • Real-time domain valuations and market data
+                  </li>
                   <li>• Performance tracking with detailed analytics</li>
                   <li>• Revenue tracking from domain leasing</li>
-                  <li>• Portfolio diversification insights</li>
+                  <li>
+                    • Portfolio diversification insights
+                  </li>
                   <li>• Export data for tax reporting</li>
                 </ul>
-                <Button className="mt-4">Connect Wallet to View Portfolio</Button>
+                <Button className="mt-4 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 hover:scale-105 transition-transform">
+                  Connect Wallet to View Portfolio
+                </Button>
               </div>
             </CardContent>
           </Card>

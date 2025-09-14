@@ -14,10 +14,10 @@ export function Footer() {
               </div>
               <span className="font-bold text-2xl text-white">Bastion Protocol</span>
             </div>
-            <p className="text-sm text-gray-300 mb-4">
+            <p className="text-sm text-gray-300 mb-5">
               Professional Web3 domain investment platform enabling collaborative investing and portfolio management.
             </p>
-            <div className="flex space-x-4 mt-4">
+            <div className="flex space-x-4 mt-5">
               <Link
                 href="https://twitter.com/bastionprotocol"
                 className="text-gray-400 hover:text-white transition-colors duration-200"
