@@ -1,6 +1,9 @@
 "use client";
 
 import { Layout } from "@/components/layout";
+import { useEffect, useRef } from "react";
+import Typed from "typed.js";
+
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -83,6 +86,22 @@ const recentActivity = [
 
 export default function HomePage() {
   const { isConnected } = useAccount();
+  const typedRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    if (!typedRef.current) return;
+
+    const typed = new Typed(typedRef.current, {
+      strings: ["Portfolio."],
+      typeSpeed: 120,
+      backSpeed: 120,
+      loop: true,
+    });
+
+    return () => {
+      typed.destroy(); 
+    };
+  }, []);
 
   return (
     <Layout>
@@ -93,13 +112,17 @@ export default function HomePage() {
             <h2 className="text-4xl  sm:text-4xl md:text-5xl  lg:text-6xl xl:text-7xl font-extrabold tracking-tight bg-gradient-to-r from-red-500 to-red-700 bg-clip-text text-transparent">
               Dashboard
             </h2>
-           
-              <p className="text-gray-400 mt-4 text-lg sm:text-xl md:text-2xl lg:text-3xl">
-                {isConnected
-                  ? `Welcome back! Here's your portfolio overview.`
-                  : "Connect your wallet to access your portfolio."}
-              </p>
-           
+
+            <p className="text-gray-400 mt-4 text-lg sm:text-xl md:text-2xl lg:text-3xl">
+              {isConnected ? (
+                "Welcome back! Here's your portfolio overview."
+              ) : (
+                <>
+                  Connect your wallet to access your
+                  <span className="inline-block ml-1" ref={typedRef}></span>
+                </>
+              )}
+            </p>
           </div>
           <div className="max-w-[650px] h-auto w-full">
             <video

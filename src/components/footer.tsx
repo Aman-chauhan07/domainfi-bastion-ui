@@ -4,7 +4,7 @@ import { Github, Twitter, Globe, Mail } from "lucide-react";
 export function Footer() {
   return (
     <footer className="bg-gradient-to-tr from-gray-900/80 via-gray-800/50 to-gray-900/80 backdrop-blur-md border-t border-gray-700/50">
-      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-4">
           {/* Logo and Description */}
           <div className="lg:col-span-1">
@@ -47,7 +47,7 @@ export function Footer() {
 
           {/* Navigation Links */}
           <div className="lg:col-span-3">
-            <div className="grid grid-cols-1 gap-10 sm:grid-cols-3 text-gray-300">
+            <div className="grid grid-cols-2 gap-5 sm:grid-cols-3 text-gray-300">
               <div>
                 <h3 className="text-sm font-semibold mb-4 text-white">Platform</h3>
                 <ul className="space-y-3">
@@ -104,9 +104,9 @@ export function Footer() {
                 <h3 className="text-sm font-semibold mb-4 text-white">Legal</h3>
                 <ul className="space-y-3">
                   <li>
-                    <Link href="/privacy" className="text-sm hover:text-purple-400 transition-colors duration-200">
+                  <Link href="/privacy" className="text-sm hover:text-purple-400 transition-colors duration-200">
                       Privacy Policy
-                    </Link>
+                    </Link>  
                   </li>
                   <li>
                     <Link href="/terms" className="text-sm hover:text-purple-400 transition-colors duration-200">
@@ -129,7 +129,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-gray-700/50 pt-6 flex flex-col sm:flex-row justify-between items-center text-gray-400 text-xs">
+        <div className="lg:mt-12 sm:mt-12 md:mt-12 mt-5 border-t border-gray-700/50 pt-6 flex flex-col sm:flex-row justify-between items-center text-gray-400 text-xs">
           <p>© 2024 Bastion Protocol. All rights reserved.</p>
           <p className="mt-2 sm:mt-0">Built with Next.js, Tailwind CSS, and Wagmi</p>
         </div>

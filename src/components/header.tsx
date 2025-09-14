@@ -100,7 +100,7 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {mobileMenuOpen && (
-          <div className="lg:hidden bg-black/95 rounded-lg border border-red-900 mt-2 shadow-lg">
+          <div className="lg:hidden bg-black/95 rounded-lg  mt-2 shadow-lg">
             <div className="space-y-1 pb-4 pt-2">
               {navigation.map((item) => {
                 const isActive = pathname === item.href;
